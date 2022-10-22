@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" />
+  <title>Dropdown</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passion</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+  <div class="hero">
+    <h1>find your next passion</h1>
+    <div id="focus"></div>
+  </div>
+
+  
+  <div class="dropdown">
+    <div class="select">
+      <span class="selected">NextPassion</span>
+      <div class="caret"></div>
+    </div>
+    <ul class="menu">
+      <li>Guitar</li>
+      <li>Drums</li>
+      <li>Yoga</li>
+      <li>Exercises</li>
+    </ul>
+  </div>
+  
+  <script src="main.js"></script>
+  
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passion</title>
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+
+    <div class="hero">
+        <h1>find your next passion</h1>
+        <div id="focus"></div>
+    </div>
+
+    
+      
+    <script>
+        let focus= document.getElementById("focus");
+        let focusHalfWidth= focus.offsetWidth/2;
+        
+        document.onmousemove=function(e){
+            focus.style.left=e.pageX-focusHalfWidth+"px";
+            focus.style.top=e.pageY-focusHalfWidth+"px";
+        }
+    </script>
+
+</body>
+</html>
