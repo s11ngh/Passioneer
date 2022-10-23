@@ -6,7 +6,7 @@ import streamlit as st
     
 # components.html(render_html)
 
-image = 'image.jpeg'
-st.image(image, use_column_width='always')
-st.text('Find your next passion')
+st.title("Getting Started")
+st.text("Pick one of the activities from the sidebar")
+st.text("Drums | Guitar | Workout | Yoga")
 
