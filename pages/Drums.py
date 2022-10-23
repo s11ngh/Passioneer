@@ -53,6 +53,10 @@ def main_loop():
     global greenLower, greenUpper
     greenLower = (40, 150, 80)
     greenUpper = (255, 255, 255)
+    # greenLower = (150,150,0)
+    # greenUpper = (180,255,255)
+    # greenLower = (22, 93, 0)   
+    # greenUpper = (45, 255, 255)
     # thresholded_frame = cv2.inRange(frame_hsv, (40, 150, 80), (255, 255, 255))  #b1
 
 
@@ -61,10 +65,10 @@ def main_loop():
     ret,frame = camera.read()
     global H, W
     H,W = frame.shape[:2]
-    hat = Instrument(W*3//10, H*1//2, 0.2, 0.25, './sounds/high_hat_1.ogg', './images/high_hat.png')
-    snare = Instrument(W*5//10, H*1//2, 0.2, 0.25, './sounds/snare_1.wav', './images/snare_drum.png')
-    tom = Instrument(W*3//10, H*3//4, 0.2, 0.25, './sounds/Tom.wav', './images/Tom.png')
-    bass = Instrument(W*5//10, H*3//4, 0.2, 0.25, './sounds/bass.wav', './images/bass.png')
+    hat = Instrument(W*2//10, H*2//5, 0.2, 0.25, './sounds/high_hat_1.ogg', './images/high_hat.png')
+    snare = Instrument(W*6//10, H*2//5, 0.2, 0.25, './sounds/snare_1.wav', './images/snare_drum.png')
+    tom = Instrument(W*2//10, H*3//4, 0.2, 0.25, './sounds/Tom.wav', './images/Tom.png')
+    bass = Instrument(W*6//10, H*3//4, 0.2, 0.25, './sounds/bass.wav', './images/bass.png')
 
     st.title("Drums")
     st.subheader("This app allows you to play Drums!")
