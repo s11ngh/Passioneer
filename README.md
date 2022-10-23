@@ -39,5 +39,5 @@ A few hours into development, we learned that research on CV and ML models such 
 We plan on adding several more hobbies for users to try out and tuning our models to support object detection in more challenging backgrounds to improve the overall function of our project. We would also try to proceed with development in making Passioneer fully accessible to people with disablities.
 
 ## Experience Passioneer
-[Github](https://github.com/s11ngh/Passioneer)
-[enter link description here](ourwebsitelink)
+[Github](https://github.com/s11ngh/Passioneer)  
+[Website](https://pradyumnach.github.io/Passioneers/)
