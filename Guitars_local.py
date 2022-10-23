@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import time
 import pygame
-import streamlit as st
+# import streamlit as st
 
 GRAD_THRESH = 5  # gradient threshold
 CLS_THRESH = 0.2  # classification threshold
@@ -104,6 +104,19 @@ def identifyChords(coords):
         return checks.index(True)
     except Exception:
         return -1
+
+def getFret():
+    key = cv2.waitKey(50)
+    checks = (
+    key & 0xFF == ord('a'),
+    key & 0xFF == ord('s'),
+    key & 0xFF == ord('d'),
+    # key & 0xFF == ord('f')
+    )
+    try:
+        return checks.index(True) + 1
+    except Exception:
+        return 0
     
 # def getFret():
 #     # checks = (
@@ -125,13 +138,13 @@ def identifyChords(coords):
 #         return 3
 #     return -1
 
-def getFret(buttons):
-    try:
-        val = buttons.index(True) + 1
-        print("Fret:", val)
-        return val
-    except Exception:
-        return 0
+# def getFret(buttons):
+#     try:
+#         val = buttons.index(True) + 1
+#         print("Fret:", val)
+#         return val
+#     except Exception:
+#         return 0
 
 # def init_buttons():
 
@@ -141,18 +154,18 @@ def playSound(chord, fret):
     print("Playing chord:", chord, "fret:", fret)
     sounds[chord][fret].play()
 
-def init_buttons(cols):
-    buttons = []
-    for i, col in enumerate(cols):
-        with col:
-            buttons.append(st.button("Fret %d" %(i+1)))
-    # buttons.append(st.button("Fret 2"))
-    # buttons.append(st.button("Fret 3"))
-    return buttons
+# def init_buttons(cols):
+#     buttons = []
+#     for i, col in enumerate(cols):
+#         with col:
+#             buttons.append(st.button("Fret %d" %(i+1)))
+#     # buttons.append(st.button("Fret 2"))
+#     # buttons.append(st.button("Fret 3"))
+#     return buttons
 
 def main_loop():
 
-    pygame.init()
+    # pygame.init()
 
     cam = cv2.VideoCapture(0)
     _,  frame = cam.read()
@@ -160,13 +173,13 @@ def main_loop():
     guitar_img = getGuitarImage('./images/uk_crop2.png')
     pick_img = cv2.imread('./images/pick_transparent.png', cv2.IMREAD_UNCHANGED)
 
-    st.title("Guitar")
-    st.subheader("This app allows you to play a Guitar!")
-    st.text("We use OpenCV and Streamlit for this demo")
-    imageLocation = st.empty()
+    # st.title("Drums")
+    # st.subheader("This app allows you to play Drums!")
+    # st.text("We use OpenCV and Streamlit for this demo")
+    # imageLocation = st.empty()
 
-    cols = st.columns([1,1,1])
-    buttons = init_buttons(cols)
+    # cols = st.columns([1,1,1])
+    # buttons = init_buttons(cols)
 
     while True:
         _, frame = cam.read()
@@ -181,14 +194,12 @@ def main_loop():
         frame[int(0.5*resize_h-400//2):400+int(0.5*resize_h-400//2), :] = \
         np.clip(0.5 * frame[int(0.5*resize_h-400//2):400+int(0.5*resize_h-400//2), :] + 0.66 * guitar_img, 0, 255).astype(np.uint8)
         
-        imageLocation.image(cv2.cvtColor(
-            coordOverlay(frame, is_marker, marker_coords, pick_img),
-            cv2.COLOR_BGR2RGB
-            ))
+        cv2.imshow('frame', coordOverlay(frame, is_marker, marker_coords, pick_img))
+
         if is_marker:
             chords = identifyChords(marker_coords)
             if chords != -1:
-                fret = getFret(buttons)
+                fret = getFret()
                 playSound(chords, fret)
         
         if cv2.waitKey(1) & 0xFF == ord('q'):

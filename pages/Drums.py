@@ -51,8 +51,10 @@ def main_loop():
     mixer.init()
     # Set HSV range for detecting blue color 
     global greenLower, greenUpper
-    greenLower = (25,52,72)
-    greenUpper = (102,255,255)
+    greenLower = (40, 150, 80)
+    greenUpper = (255, 255, 255)
+    # thresholded_frame = cv2.inRange(frame_hsv, (40, 150, 80), (255, 255, 255))  #b1
+
 
     # Obtain input from the webcam 
     camera = cv2.VideoCapture(0)
