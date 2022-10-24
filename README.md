@@ -1,3 +1,6 @@
+# Passioneer: Find your next passion!
+ 🥇 Passioneer won the **Best App - Emerging** Award at [HackGT 9](https://devpost.com/software/passioneer)! 🥇  
+  
 ## Installation
 1. Install the requirements by ```conda env create -f environment.yaml```
 2. Activate the environment by ```conda activate hackgt```.
